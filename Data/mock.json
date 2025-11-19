@@ -1,0 +1,10 @@
+{
+  "nome": "Douglas Alvares do Nascimento",
+  "idade": 34,
+  "dataNascimento": "07/02/1991",
+  "telefone": "+5521984263016",
+  "endereco": {
+    "cidade": "São Gonçalo",
+    "estado": "Rio de Janeiro"
+  }
+}

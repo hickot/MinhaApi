@@ -6,6 +6,7 @@ namespace MinhaApi.Controllers
     [Route("api/[controller]")]
     public class MockController : ControllerBase
     {
+        private readonly Utils _utils = new Utils();
         private readonly ILogger<MockController> _logger;
 
         public MockController(ILogger<MockController> logger)
@@ -16,7 +17,7 @@ namespace MinhaApi.Controllers
         private object ObterMock()
         {
 
-            _logger.LogInformation("Inicia Montagem da Mock...");
+            _logger.LogInformation("Iniciou Montagem da Mock...");
             var mock = new
             {
                 nome = "Douglas Alvares do Nascimento",
@@ -42,7 +43,20 @@ namespace MinhaApi.Controllers
             return json;
         }
 
-        [HttpGet]
-        public IActionResult Get() => Ok(ObterMock());
+        [HttpGet("json")]
+        public async Task<IActionResult> Get()
+        {
+            var json = await _utils.GetJson();
+
+            if (json == null)
+            return NotFound("Arquivo JSON não encontrado.");
+
+            return Content(json, "application/json");
+        }
+         
+        // [HttpGet("json")]
+        // public IActionResult Get(){
+        //     return Ok(ObterMock());
+        // }
     }
 }

@@ -1,5 +1,6 @@
 
 using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MinhaApi;
 
@@ -27,4 +28,14 @@ public class Utils
         return jsonFormatter;
     }
 
+    public async Task<string?> GetJson()
+    {
+        var caminho = Path.Combine(Directory.GetCurrentDirectory(), "Data", "mock.json");
+
+        if (!File.Exists(caminho))
+            return null;
+
+        var conteudo = await File.ReadAllTextAsync(caminho);
+        return conteudo;
+    }   
 }
