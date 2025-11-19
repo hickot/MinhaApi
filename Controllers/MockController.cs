@@ -43,7 +43,7 @@ namespace MinhaApi.Controllers
             return json;
         }
 
-        [HttpGet("json")]
+        [HttpGet]
         public async Task<IActionResult> Get()
         {
             var json = await _utils.GetJson();

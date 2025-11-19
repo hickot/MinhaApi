@@ -41,3 +41,6 @@ bld/
 
 # Chave pem
 minhachave.pem
+
+# Pasta publish
+/publish/*
