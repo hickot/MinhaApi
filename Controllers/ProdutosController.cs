@@ -31,6 +31,7 @@ namespace MinhaApi.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] string nome)
         {
+            _logger.LogInformation("FromBody: " + nome);
             Produtos.Add(nome);
             return CreatedAtAction(nameof(Get), new { id = Produtos.Count - 1 }, nome);
         }

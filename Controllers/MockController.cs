@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Microsoft.VisualBasic;
 
 namespace MinhaApi.Controllers
 {
@@ -34,7 +37,7 @@ namespace MinhaApi.Controllers
             return mock;
         }
 
-        private Object ObterMockString ()
+        private Object ObterMockString()
         {
             var utils = new Utils();
             var jsonString = "{douglas}";
@@ -49,14 +52,68 @@ namespace MinhaApi.Controllers
             var json = await _utils.GetJson();
 
             if (json == null)
-            return NotFound("Arquivo JSON não encontrado.");
+                return NotFound("Arquivo JSON não encontrado.");
 
             return Content(json, "application/json");
         }
-         
+
         // [HttpGet("json")]
         // public IActionResult Get(){
         //     return Ok(ObterMock());
         // }
+
+        // [HttpPost]
+        // public IActionResult Post([FromBody] MockPost json)
+        // {
+        //     if (json == null)
+        //     {
+        //         return BadRequest("O JSON enviado é inválido ou está vazio.");
+        //     }
+        //     else
+        //     {
+        //         _logger.LogInformation("Body: " + json);
+        //     }
+
+        //     // Aqui você pode manipular o objeto recebido
+        //     // exemplo: salvar no banco, validar, etc.
+
+        //     return Ok(new
+        //     {
+        //         json.Nome,
+        //         json.Idade,
+        //         json.Email
+        //     });
+        // }
+
+        [HttpPost]
+        public IActionResult Post([FromBody] dynamic body)
+        {
+
+            string json = body.GetRawText(); // <- Pega o JSON original!
+            _logger.LogInformation("Body recebido: " + json);
+
+            string estado = body.GetProperty("Estado").GetString();
+
+            switch (estado)
+            {
+                case "WELCOME":
+                    return Ok(new
+                    {
+                        comando = estado
+                    });
+
+                case "MENU_IDENTIFICACAO":
+                    return Ok(new
+                    {
+                        comando = estado
+                    });
+
+                default:
+                    return Ok(new
+                    {
+                        comando = "NO_ESTADO"
+                    });
+            }
+        }
     }
 }
