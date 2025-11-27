@@ -89,30 +89,52 @@ namespace MinhaApi.Controllers
         public IActionResult Post([FromBody] dynamic body)
         {
 
-            string json = body.GetRawText(); // <- Pega o JSON original!
-            _logger.LogInformation("Body recebido: " + json);
-
-            string estado = body.GetProperty("Estado").GetString();
-
-            switch (estado)
+            try
             {
-                case "WELCOME":
-                    return Ok(new
-                    {
-                        comando = estado
-                    });
+                string json = body.GetRawText(); // <- Pega o JSON original!
+                _logger.LogInformation("Body recebido: " + json);
 
-                case "MENU_IDENTIFICACAO":
-                    return Ok(new
-                    {
-                        comando = estado
-                    });
+                //string est = body.GetProperty("Estado").NotFound();
+                if (!json.Contains("Estado"))
+                {
+                    _logger.LogInformation("Aqui não existe Estado: ");
 
-                default:
-                    return Ok(new
+                    return BadRequest(new
                     {
-                        comando = "NO_ESTADO"
+                       message = "O campo (estado) deverá ser iniciado com a letra maiúscula, ficando assim: (Estado)" 
                     });
+                }
+
+                string estado = body.GetProperty("Estado").GetString();
+
+                switch (estado)
+                {
+                    case "WELCOME":
+                        return Ok(new
+                        {
+                            comando = estado
+                        });
+
+                    case "MENU_IDENTIFICACAO":
+                        return Ok(new
+                        {
+                            comando = estado
+                        });
+
+                    default:
+                        return Ok(new
+                        {
+                            comando = "NO_ESTADO"
+                        });
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error aqui: " + ex);
+                return StatusCode(500, new 
+                { 
+                    erro = ex.ToString() 
+                });
             }
         }
     }
