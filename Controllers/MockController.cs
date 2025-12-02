@@ -49,7 +49,8 @@ namespace MinhaApi.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var json = await _utils.GetJson();
+            string fileName = "mock.json";
+            var json = await _utils.GetJson(fileName);
 
             if (json == null)
                 return NotFound("Arquivo JSON não encontrado.");

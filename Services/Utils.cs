@@ -28,9 +28,9 @@ public class Utils
         return jsonFormatter;
     }
 
-    public async Task<string?> GetJson()
+    public async Task<string?> GetJson(string fileName)
     {
-        var caminho = Path.Combine(Directory.GetCurrentDirectory(), "Data", "mock.json");
+        var caminho = Path.Combine(Directory.GetCurrentDirectory(), "Data", fileName);
 
         if (!File.Exists(caminho))
             return null;
