@@ -37,7 +37,7 @@ namespace MinhaApi.Controllers
         {
             using JsonDocument doc = JsonDocument.Parse(json);
 
-            if (doc.RootElement.TryGetProperty("Estado", out JsonElement estadoElement))
+            if (doc.RootElement.TryGetProperty("estado", out JsonElement estadoElement))
             {
                 return estadoElement.GetString();
             }
