@@ -1,0 +1,136 @@
+"comandos": [
+    {
+        "interacao": {
+            "nomeInteracao": "PEGA_CPF_CNPJ",
+            "tipo": "dtmf",
+            "estado": "inicial",
+            "coletaSegura": "True",
+            "confidence": "0",
+            "tamanhoMin": "1",
+            "tamanhoMax": "14",
+            "numTentativas": "0",
+            "maxTentativas": "3",
+            "timeout": "10",
+            "dialogo": {
+                "inicial": {
+                    "tentativas": [
+                        {
+                            "prompts": [
+                                {
+                                    "modo": "audiofile",
+                                    "valor": "Rede_Pre_Ouvidoria_DigiteCPFCNPJ_ou_0.wav",
+                                    "cut": "sim",
+                                    "descricao": "Digite o número do CNPJ ou CPF cadastrado na rede"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "noinput": {
+                    "tentativas": [
+                        {
+                            "prompts": [
+                                {
+                                    "modo": "audiofile",
+                                    "valor": "Rede_Pre_Ouvidoria_Rede_MenuIdent01_PreOuvidoria_Por.wav",
+                                    "cut": "sim",
+                                    "descricao": "Oi! Eu tinha pedido pra você digitar um número de CNPJ ou CPF. Digita aqui o número que está cadastrado na laranjinha."
+                                }
+                            ]
+                        },
+                        {
+                            "prompts": [
+                                {
+                                    "modo": "audiofile",
+                                    "valor": "Rede_Pre_Ouvidoria_Rede_MenuIdent02_PreOuvidoria_Por.wav",
+                                    "cut": "sim",
+                                    "descricao": "Tá por aí? Vamos tentar mais uma vez? Preciso que você digite o número de CNPJ ou CPF do estabelecimento que está cadastrado na laranjinha."
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "nomatch": {
+                    "tentativas": [
+                        {
+                            "prompts": [
+                                {
+                                    "modo": "audiofile",
+                                    "valor": "Rede_Pre_Ouvidoria_Rede_MenuIdent03_PreOuvidoria_Por.wav",
+                                    "cut": "sim",
+                                    "descricao": "Poxa! Não consegui te entender. Este canal é exclusivo para clientes cadastrados na Rede. Digite o CNPJ ou CPF usado no cadastro, para tentarmos novamente"
+                                }
+                            ]
+                        },
+                        {
+                            "prompts": [
+                                {
+                                    "modo": "audiofile",
+                                    "valor": "Rede_Pre_Ouvidoria_Rede_MenuIdent04_PreOuvidoria_Por.wav",
+                                    "cut": "sim",
+                                    "descricao": "Não consegui te entender. Este canal é exclusivo para clientes cadastrados na Rede. Digite o CNPJ ou CPF usado no cadastro, para tentarmos novamente."
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "acoes": {
+                "usuario": [
+                    {
+                        "input": "N11",
+                        "comandosInteracao": [
+                            {
+                                "estado": "VALIDA_CPF_CNPJ",
+                                "tipo": "nextdlg"
+                            }
+                        ]
+                    },
+                    {
+                        "input": "N14",
+                        "comandosInteracao": [
+                            {
+                                "estado": "VALIDA_CPF_CNPJ",
+                                "tipo": "nextdlg"
+                            }
+                        ]
+                    }
+                ],
+                "sistema": [
+                    {
+                        "input": "noinput1",
+                        "comandosInteracao": [
+                            {
+                                "tipo": "repeat"
+                            }
+                        ]
+                    },
+                    {
+                        "input": "nomatch1",
+                        "comandosInteracao": [
+                            {
+                                "tipo": "repeat"
+                            }
+                        ]
+                    },
+                    {
+                        "input": "noinput2",
+                        "comandosInteracao": [
+                            {
+                                "tipo": "repeat"
+                            }
+                        ]
+                    },
+                    {
+                        "input": "nomatch2",
+                        "comandosInteracao": [
+                            {
+                                "tipo": "repeat"
+                            }
+                        ]
+                    },
+                    {
+                        "input": "maxnoinput",
+                        "comandosInteracao": [
+                            {"prompt
+Close

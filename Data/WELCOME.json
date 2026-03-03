@@ -1,3 +1,19 @@
 {
-"Estado":"WELCOME1"
+    "comandos": [
+        {
+            "prompts": [
+                {
+                    "modo": "audiofile",
+                    "valor": "Rede_Pre_Ouvidoria_Saudação_Noite.wav",
+                    "cut": "sim",
+                    "descricao": "Olá Boa noite! Aqui é da Ouvidoria da Rede!"
+                }
+            ],
+            "tipo": "play"
+        },
+        {
+            "estado": "PEGA_CPF_CNPJ",
+            "tipo": "nextdlg"
+        }
+    ]
 }
