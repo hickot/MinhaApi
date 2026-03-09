@@ -198,7 +198,8 @@ Possíveis evoluções do projeto:
 
 # 👨‍💻 Autor
 
-Douglas
+Douglas Alvares
+https://www.linkedin.com/in/douglas-alvares-a66601b2/
 
 ------------------------------------------------------------------------
 
