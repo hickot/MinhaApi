@@ -162,11 +162,7 @@ dotnet run
 
 A API ficará disponível normalmente em:
 
-    https://localhost:5001
-
-ou
-
-    http://localhost:5000
+    http://localhost/api/Acoes
 
 ------------------------------------------------------------------------
 
@@ -182,7 +178,7 @@ Você pode testar utilizando:
 Exemplo com curl:
 
 ``` bash
-curl -X POST http://localhost:5000/api/acoes -H "Content-Type: application/json" -d '{"estado":"WELCOME"}'
+curl -X POST http://localhost/api/Acoes -H "Content-Type: application/json" -d '{"estado":"WELCOME"}'
 ```
 
 ------------------------------------------------------------------------
