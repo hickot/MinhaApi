@@ -11,4 +11,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <!-- Excluir arquivos de teste se existirem dentro da árvore do projeto -->
+    <Compile Remove="tests\\**\\*.cs" />
+  </ItemGroup>
+
 </Project>
